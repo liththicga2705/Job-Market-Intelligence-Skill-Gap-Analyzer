@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>{{ job.job_title }} - Job Details</title>
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'jobs/style.css' %}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>{{ job.job_title }}</h1>
+
+    <p class="subtitle">
+        {{ job.company }} — {{ job.location }}
+    </p>
+
+    <div class="job-card">
+
+        <h2>Job Details</h2>
+
+        <p>
+            <strong>Company:</strong>
+            {{ job.company }}
+        </p>
+
+        <p>
+            <strong>Location:</strong>
+            {{ job.location }}
+        </p>
+
+        <p>
+            <strong>Experience:</strong>
+            {{ job.experience }}
+        </p>
+
+        <p>
+            <strong>Salary:</strong>
+            {{ job.salary }}
+        </p>
+
+        <p>
+            <strong>Skills:</strong>
+            <span class="skills">{{ job.skills }}</span>
+        </p>
+
+        <p>
+            <strong>Employment Type:</strong>
+            {{ job.employment_type }}
+        </p>
+
+        <p>
+            <strong>Posted Date:</strong>
+            {{ job.posted_date }}
+        </p>
+
+    </div>
+
+    <br>
+
+    <a href="/">← Back to Jobs</a>
+
+</div>
+
+</body>
+</html>

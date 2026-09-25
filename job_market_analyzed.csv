@@ -1,0 +1,6 @@
+id,job_title,company,location,experience,salary,skills,employment_type,posted_date,salary_max,salary_min,average_salary
+1,Data Analyst,Amazon,Chennai,0-2 years,6-8LPA,"SQL, Excel, Python, Power BI",Full time,2026-09-24,8,6,7.0
+2,Business Analyst,Accenture,Bangalore,0-2 years,5-7LPA,"SQL, Excel, Tableau, Power BI",Full time,2026-09-19,7,5,6.0
+3,Data scientist,TCS,Chennai,1-3 years,7-10LPA,"SQL, Pandas, Python, Machine Learning",Full time,2026-09-18,10,7,8.5
+4,Junior Data Analyst,Infosys,Bangalore,0-1 years,4-6LPA,"SQL, Excel, Power BI",Full time,2026-09-17,6,4,5.0
+5,Python Developer,Zoho,Chennai,0-2 years,5-8LPA,"SQL, Django, Python, Git",Full time,2026-09-16,8,5,6.5

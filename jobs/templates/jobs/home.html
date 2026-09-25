@@ -1,0 +1,175 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Market Intelligence</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'jobs/style.css' %}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Job Market Intelligence & Skill Gap Analyzer</h1>
+
+        <p class="subtitle">
+            Explore jobs, skills, salaries and hiring trends.
+        </p>
+
+        <h2>Available Jobs</h2>
+
+        <p>
+            <strong>{{ job_count }} Jobs Found</strong>
+        </p>
+        <p>
+            <strong>Average Salary Range:</strong>
+            {{ average_min_salary|floatformat:1 }} - {{ average_max_salary|floatformat:1 }} LPA
+        </p>
+        <h2>Skill Demand Analysis</h2>
+
+<div class="skill-demand">
+
+    <div class="skill-box">
+        <h3>SQL</h3>
+        <p>{{ sql_count }} Jobs</p>
+    </div>
+
+    <div class="skill-box">
+        <h3>Python</h3>
+        <p>{{ python_count }} Jobs</p>
+    </div>
+
+    <div class="skill-box">
+        <h3>Excel</h3>
+        <p>{{ excel_count }} Jobs</p>
+    </div>
+
+    <div class="skill-box">
+        <h3>Power BI</h3>
+        <p>{{ powerbi_count }} Jobs</p>
+    </div>
+
+    <div class="skill-box">
+        <h3>Tableau</h3>
+        <p>{{ tableau_count }} Jobs</p>
+    </div>
+
+    <div class="skill-box">
+        <h3>Pandas</h3>
+        <p>{{ pandas_count }} Jobs</p>
+    </div>
+
+    <div class="skill-box">
+        <h3>Machine Learning</h3>
+        <p>{{ machine_learning_count }} Jobs</p>
+    </div>
+
+    <div class="skill-box">
+        <h3>Django</h3>
+        <p>{{ django_count }} Jobs</p>
+    </div>
+
+    <div class="skill-box">
+        <h3>Git</h3>
+        <p>{{ git_count }} Jobs</p>
+    </div>
+
+</div>
+        <form method="GET">
+
+            <input
+                type="text"
+                name="search"
+                placeholder="Search for jobs, skills or companies..."
+            >
+
+            <select name="location">
+
+                <option value="">All Locations</option>
+
+                <option value="Chennai">Chennai</option>
+
+                <option value="Bangalore">Bangalore</option>
+
+            </select>
+
+            <button type="submit">Search</button>
+
+        </form>
+
+        <div class="job-grid">
+
+            {% for job in jobs %}
+
+                <div class="job-card">
+
+                    <h2>
+    <a href="{% url 'job_detail' job.id %}">
+        {{ job.job_title }}
+    </a>
+</h2>
+
+                    <p><strong>Company:</strong> {{ job.company }}</p>
+
+                    <p><strong>Location:</strong> {{ job.location }}</p>
+
+                    <p><strong>Experience:</strong> {{ job.experience }}</p>
+
+                    <p><strong>Salary:</strong> {{ job.salary }}</p>
+
+                    <p>
+                        <strong>Skills:</strong>
+                        <span class="skills">{{ job.skills }}</span>
+                    </p>
+
+                    <span class="badge">
+                        {{ job.employment_type }}
+                    </span>
+
+                    <p><strong>Posted Date:</strong> {{ job.posted_date }}</p>
+
+                </div>
+
+            {% empty %}
+
+                <p>No jobs available.</p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+    <h2>Experience Analysis</h2>
+
+        <div class="experience-box">
+
+        <h3>Fresher-Friendly Jobs</h3>
+
+        <p>{{ fresher_jobs }} Jobs</p>
+
+    </div>
+    <h2>Hiring Trends</h2>
+
+<div class="hiring-trends">
+
+    {% for month in monthly_jobs %}
+
+        <div class="trend-box">
+
+            <h3>{{ month.month|date:"F Y" }}</h3>
+
+            <p>{{ month.total_jobs }} Jobs Posted</p>
+
+        </div>
+
+    {% empty %}
+
+        <p>No hiring trend data available.</p>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
